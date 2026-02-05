@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhkqr2uv4bn5n"]
+
+[ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="1_bq70u"]
+[ext_resource type="PackedScene" path="res://scenes/GameManager.tscn" id="2_hq4pv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(1100, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_left_wall"]
+size = Vector2(40, 800)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_right_wall"]
+size = Vector2(40, 800)
+
+[node name="Main" type="Node2D"]
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="Floor" type="StaticBody2D" parent="Map"]
+position = Vector2(560, 620)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Floor"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="LeftWall" type="StaticBody2D" parent="Map"]
+position = Vector2(-20, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/LeftWall"]
+shape = SubResource("RectangleShape2D_left_wall")
+
+[node name="RightWall" type="StaticBody2D" parent="Map"]
+position = Vector2(1140, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/RightWall"]
+shape = SubResource("RectangleShape2D_right_wall")
+
+[node name="SpawnPointP1" type="Marker2D" parent="."]
+position = Vector2(280, 540)
+
+[node name="SpawnPointP2" type="Marker2D" parent="."]
+position = Vector2(840, 540)
+
+[node name="Player1" parent="." instance=ExtResource("1_bq70u")]
+left_action = &"p1_left"
+right_action = &"p1_right"
+jump_action = &"p1_jump"
+attack_action = &"p1_attack"
+modulate = Color(0.4, 0.8, 1, 1)
+
+[node name="Player2" parent="." instance=ExtResource("1_bq70u")]
+left_action = &"p2_left"
+right_action = &"p2_right"
+jump_action = &"p2_jump"
+attack_action = &"p2_attack"
+modulate = Color(1, 0.6, 0.6, 1)
+
+[node name="GameManager" parent="." instance=ExtResource("2_hq4pv")]
