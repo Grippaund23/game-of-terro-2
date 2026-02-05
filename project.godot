@@ -10,6 +10,12 @@ config_version=5
 
 [application]
 
+run/main_scene="res://scenes/Main.tscn"
 config/name="Game-of-terrone-2"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1120
+window/size/viewport_height=720
